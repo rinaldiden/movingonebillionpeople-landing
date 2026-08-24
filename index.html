@@ -1,29 +1,2034 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it" class="no-js">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Moving One Billion People</title>
-<meta name="description" content="Democratize the freedom of movement for one billion people on Earth. Open-source, 3D-printable, personal vehicles that anyone can manifest locally." />
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; font-family: -apple-system, system-ui, sans-serif; background: #0a0a0a; color: #fafafa; overflow: hidden; }
-body { display: grid; place-items: center; padding: 32px; }
-.wrap { max-width: 720px; text-align: center; }
-h1 { font-size: clamp(40px, 8vw, 88px); line-height: 1; font-weight: 600; letter-spacing: -0.04em; margin-bottom: 24px; }
-.tag { font-size: clamp(18px, 2.4vw, 28px); line-height: 1.4; opacity: 0.7; margin-bottom: 48px; font-weight: 300; }
-.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f97316; margin: 0 12px 4px; vertical-align: middle; animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-.status { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; font-weight: 500; }
-.foot { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); font-size: 12px; opacity: 0.3; letter-spacing: 0.08em; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Progressive enhancement flag: mark JS available before paint so reveal
+       animations only apply when JS can un-hide them. No-JS = content visible. -->
+  <script>document.documentElement.classList.replace('no-js','js');</script>
+
+  <!-- ═══════════════════════════════════════════════
+       PRIMARY META
+  ═══════════════════════════════════════════════ -->
+  <title>Moving One Billion People — Democratizzare la libertà di movimento</title>
+  <meta name="description" content="Esploriamo una mobilità che non lascia traccia, con soluzioni nuove — e nel farlo aiutiamo le Persone a muoversi. Veicoli open-source, stampabili in 3D, nati in Valtellina." />
+  <link rel="canonical" href="https://movingonebillionpeople.org/" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- ═══════════════════════════════════════════════
+       OPEN GRAPH + TWITTER CARD
+       Replace og:image with /assets/og-image.jpg (1200×630)
+  ═══════════════════════════════════════════════ -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://movingonebillionpeople.org/" />
+  <meta property="og:title"       content="Moving One Billion People" />
+  <meta property="og:description" content="Esploriamo una mobilità che non lascia traccia — e nel farlo aiutiamo le Persone a muoversi. Veicoli open-source, stampabili in 3D, per un miliardo di Persone." />
+  <meta property="og:image"       content="https://movingonebillionpeople.org/assets/asmile-video.jpg" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="720" />
+  <meta property="og:image:alt" content="Il progetto Olympink e il telaio di Asmile con i giunti rosa" />
+  <meta property="og:locale"      content="it_IT" />
+  <meta property="og:site_name"   content="Moving One Billion People" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Moving One Billion People" />
+  <meta name="twitter:description" content="Esploriamo una mobilità che non lascia traccia — e nel farlo aiutiamo le Persone a muoversi. Veicoli open-source, stampabili in 3D, per un miliardo di Persone." />
+  <meta name="twitter:image"       content="https://movingonebillionpeople.org/assets/asmile-video.jpg" />
+
+  <!-- ═══════════════════════════════════════════════
+       FAVICON
+       Place favicon.svg (or .ico) + apple-touch-icon.png in /assets
+  ═══════════════════════════════════════════════ -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- ═══════════════════════════════════════════════
+       FONTS — DM Serif Display + IBM Plex Mono
+       Single connection, display:swap, only weights used.
+       Self-host alternative: download from Google Fonts
+       and place in /assets/fonts/ for zero external dependency.
+  ═══════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+  </noscript>
+
+  <!-- ═══════════════════════════════════════════════
+       JSON-LD — Organization / NonprofitOrganization
+  ═══════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Moving One Billion People",
+    "url": "https://movingonebillionpeople.org",
+    "logo": "https://movingonebillionpeople.org/assets/asmile-video.jpg",
+    "description": "Iniziativa open-source per democratizzare la libertà di movimento di un miliardo di Persone, con veicoli stampabili in 3D che non lasciano traccia.",
+    "email": "daniele@movingonebillionpeople.org",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Valtellina, Italy"
+    },
+    "award": "Concorso nazionale EDUKI 2025/26 — categoria Azioni Concrete, premio ritirato al Palais des Nations (ONU), Ginevra, per il progetto Olympink / Asmile",
+    "sameAs": [
+      "https://www.instagram.com/moving_one_billion_people",
+      "https://github.com/rinaldiden/Moving-One-Billion-People-",
+      "https://ko-fi.com/danielerinaldi",
+      "https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
+    ]
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════════
+       CRITICAL CSS
+  ═══════════════════════════════════════════════ -->
+  <style>
+    /* ─────────────────────────────────────────────
+       DESIGN TOKENS
+    ───────────────────────────────────────────── */
+    :root {
+      /* Colors */
+      --bg:           #0a0a0a;
+      --bg-surface:   #111111;
+      --bg-elevated:  #1a1a1a;
+      --fg:           #f5f0e8;
+      --fg-muted:     rgba(245,240,232,.55);
+      --fg-subtle:    rgba(245,240,232,.3);
+      --accent:       #f97316;        /* brand orange — the fire of the workshop */
+      --accent-dim:   rgba(249,115,22,.15);
+      --bamboo:       #c9a86a;        /* bamboo gold — earth, not green. use sparingly */
+      --bamboo-dim:   rgba(201,168,106,.12);
+      --border:       rgba(245,240,232,.1);
+      --border-hover: rgba(249,115,22,.4);
+
+      /* Typography */
+      --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+      --font-mono:  'IBM Plex Mono', 'Courier New', monospace;
+      /* system-ui as body fallback — no FOUT for body copy */
+      --font-body:  -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+      /* Type scale — fluid via clamp() */
+      --text-xs:    clamp(.65rem,  1.2vw,  .75rem);
+      --text-sm:    clamp(.8rem,   1.5vw,  .9rem);
+      --text-base:  clamp(.9rem,   1.8vw,  1.05rem);
+      --text-lg:    clamp(1.1rem,  2.2vw,  1.3rem);
+      --text-xl:    clamp(1.3rem,  2.8vw,  1.7rem);
+      --text-2xl:   clamp(1.8rem,  4vw,    2.6rem);
+      --text-3xl:   clamp(2.4rem,  6vw,    4rem);
+      --text-hero:  clamp(2.8rem,  9vw,    7.2rem);
+
+      /* Spacing scale */
+      --sp-1:  .25rem;
+      --sp-2:  .5rem;
+      --sp-3:  .75rem;
+      --sp-4:  1rem;
+      --sp-6:  1.5rem;
+      --sp-8:  2rem;
+      --sp-12: 3rem;
+      --sp-16: 4rem;
+      --sp-20: 5rem;
+      --sp-24: 6rem;
+      --sp-32: 8rem;
+
+      /* Layout */
+      --max-w:   1100px;
+      --gutter:  clamp(1.25rem, 5vw, 3rem);
+      --radius:  4px;
+      --radius-lg: 10px;
+
+      /* Motion */
+      --ease-out-expo: cubic-bezier(.16,1,.3,1);
+      --duration-fast: 180ms;
+      --duration-mid:  320ms;
+      --duration-slow: 600ms;
+    }
+
+    /* ─────────────────────────────────────────────
+       RESET + BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+      min-height: 100dvh;
+      /* Subtle grain overlay via SVG data-URI — zero external request */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    /* Accessible focus ring — visible, on-brand */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: var(--radius);
+    }
+
+    img, video {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─────────────────────────────────────────────
+       REDUCED MOTION — disable all animations
+    ───────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ─────────────────────────────────────────────
+       LAYOUT UTILITIES
+    ───────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .section {
+      padding-block: var(--sp-24);
+      border-top: 1px solid var(--border);
+    }
+    /* Story opens under the diagonal skew divider — no hairline there */
+    .story.section { border-top: none; }
+
+    .section--lg {
+      padding-block: var(--sp-32);
+    }
+
+    /* ─────────────────────────────────────────────
+       TYPOGRAPHY UTILITIES
+    ───────────────────────────────────────────── */
+    .serif { font-family: var(--font-serif); }
+    .mono  { font-family: var(--font-mono); }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      color: var(--fg);
+      margin-top: var(--sp-4);
+    }
+
+    .body-text {
+      font-size: var(--text-base);
+      line-height: 1.75;
+      color: var(--fg-muted);
+      max-width: 62ch;
+    }
+
+    /* ─────────────────────────────────────────────
+       REVEAL ANIMATION — JS-enhanced, CSS fallback
+       Without JS: elements are visible (no class added)
+    ───────────────────────────────────────────── */
+    /* Only hide when JS is present to reveal them later. No-JS: fully visible. */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity var(--duration-slow) var(--ease-out-expo),
+        transform var(--duration-slow) var(--ease-out-expo);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal--delay-1 { transition-delay: 80ms; }
+    .reveal--delay-2 { transition-delay: 160ms; }
+    .reveal--delay-3 { transition-delay: 240ms; }
+    .reveal--delay-4 { transition-delay: 320ms; }
+
+    /* ─────────────────────────────────────────────
+       BUTTONS / LINKS
+    ───────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-3);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: .04em;
+      padding: var(--sp-3) var(--sp-6);
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition:
+        background var(--duration-fast),
+        border-color var(--duration-fast),
+        color var(--duration-fast),
+        transform var(--duration-fast);
+      min-height: 44px; /* touch target */
+      text-decoration: none;
+    }
+
+    .btn:active { transform: translateY(1px); }
+
+    .btn--primary {
+      background: var(--accent);
+      color: #0a0a0a;
+      border-color: var(--accent);
+    }
+    .btn--primary:hover {
+      background: #fb923c;
+      border-color: #fb923c;
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--fg);
+      border-color: var(--border);
+    }
+    .btn--outline:hover {
+      border-color: var(--border-hover);
+      color: var(--accent);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--fg-muted);
+      border-color: transparent;
+      padding-inline: var(--sp-2);
+    }
+    .btn--ghost:hover { color: var(--fg); }
+
+    /* ─────────────────────────────────────────────
+       SKIP LINK (a11y)
+    ───────────────────────────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: var(--sp-4);
+      z-index: 999;
+      background: var(--accent);
+      color: #0a0a0a;
+      padding: var(--sp-2) var(--sp-4);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      border-radius: var(--radius);
+      font-weight: 500;
+    }
+    .skip-link:focus { top: var(--sp-4); }
+
+    /* ─────────────────────────────────────────────
+       SITE HEADER / NAV
+    ───────────────────────────────────────────── */
+    .site-header {
+      position: fixed;
+      top: 0;
+      inset-inline: 0;
+      z-index: 100;
+      padding-block: var(--sp-4);
+      border-bottom: 1px solid transparent;
+      transition: background var(--duration-mid), border-color var(--duration-mid);
+    }
+
+    .site-header.scrolled {
+      background: rgba(10,10,10,.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: var(--border);
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+    }
+
+    .site-logo {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--fg);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      min-height: 44px;
+    }
+
+    .site-logo span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: .4; transform: scale(.85); }
+      50%       { opacity: 1; transform: scale(1); }
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      color: var(--fg-muted);
+      padding: var(--sp-2) var(--sp-3);
+      border-radius: var(--radius);
+      transition: color var(--duration-fast);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-nav a:hover { color: var(--fg); }
+
+    /* Hide nav links on very small screens, show CTA only */
+    @media (max-width: 600px) {
+      .site-nav .nav-link { display: none; }
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO SECTION
+    ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-top: 80px; /* clear fixed header */
+      padding-bottom: var(--sp-24);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative large numeral — pure CSS, zero images */
+    .hero__bg-numeral {
+      position: absolute;
+      top: 50%;
+      right: -5%;
+      transform: translateY(-50%);
+      font-family: var(--font-serif);
+      font-size: clamp(18rem, 40vw, 38rem);
+      line-height: 1;
+      color: rgba(249,115,22,.04);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+    }
+
+    .hero .container { position: relative; z-index: 1; }
+
+    .hero__counter {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin-bottom: var(--sp-8);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+
+    .hero__counter::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero__headline {
+      font-family: var(--font-serif);
+      font-size: var(--text-hero);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      color: var(--fg);
+      max-width: 14ch;
+      margin-bottom: var(--sp-8);
+    }
+
+    /* Italic accent word in headline — AIUxer will decide exact word */
+    .hero__headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero__sub {
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--fg-muted);
+      max-width: 48ch;
+      margin-bottom: var(--sp-12);
+      font-weight: 300;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      align-items: center;
+    }
+
+    .hero__scroll-hint {
+      position: absolute;
+      bottom: var(--sp-8);
+      left: var(--gutter);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .1em;
+      color: var(--fg-subtle);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      text-transform: uppercase;
+    }
+
+    .hero__scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--fg-subtle), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: .3; transform: scaleY(.6); transform-origin: top; }
+      50%       { opacity: .8; transform: scaleY(1); }
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION DIVIDER — diagonal skew (one use, hero→story)
+    ───────────────────────────────────────────── */
+    .skew-divider {
+      height: 80px;
+      background: var(--bg-surface);
+      clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      margin-top: -1px;
+    }
+
+    /* ─────────────────────────────────────────────
+       STORY SECTION — Asmile / Arianna / Poschiavo
+    ───────────────────────────────────────────── */
+    .story {
+      background: var(--bg-surface);
+    }
+
+    .story .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-16);
+    }
+
+    @media (min-width: 720px) {
+      .story .container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    /* Image placeholder — replace with real img once available */
+    .story__image-wrap {
+      position: relative;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .story__image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Visible placeholder when no image yet */
+    .story__image-wrap.placeholder::after {
+      content: 'Photo: Asmile / Arianna';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .08em;
+      color: var(--fg-subtle);
+      text-transform: uppercase;
+    }
+
+    /* Accessible placeholder via ARIA if no real image */
+    .story__image-wrap.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .story__content { display: flex; flex-direction: column; gap: var(--sp-6); }
+
+    .story__quote {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--fg);
+      border-left: 3px solid var(--accent);
+      padding-left: var(--sp-6);
+      margin-block: var(--sp-4);
+    }
+
+    /* ─────────────────────────────────────────────
+       MATERIAL SECTION — bamboo + 3D print
+    ───────────────────────────────────────────── */
+    .material {
+      background: var(--bg-surface);
+    }
+
+    .material .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-16);
+    }
+
+    @media (min-width: 860px) {
+      .material .container {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: var(--sp-24);
+      }
+    }
+
+    .material__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--bamboo);
+      border: 1px solid var(--bamboo-dim);
+      background: var(--bamboo-dim);
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: 999px;
+    }
+
+    .material__specs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      margin-top: var(--sp-8);
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--sp-4);
+      padding-block: var(--sp-4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spec-row__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      flex-shrink: 0;
+      min-width: 7ch;
+    }
+
+    .spec-row__value {
+      font-size: var(--text-base);
+      color: var(--fg);
+    }
+
+    /* Image placeholder for bamboo photo */
+    .material__image-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .material__image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .material__image-wrap.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .material__image-wrap.placeholder::after {
+      content: 'Photo: Asmile 5/1bln in bamboo';
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .08em;
+      color: var(--fg-subtle);
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────
+       VISION SECTION — propagation / schools → care homes
+    ───────────────────────────────────────────── */
+    .vision {
+      background: var(--bg-surface);
+    }
+
+    .vision__header {
+      text-align: center;
+      max-width: 56ch;
+      margin-inline: auto;
+      margin-bottom: var(--sp-16);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+
+    .vision__nodes {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+
+    @media (min-width: 600px) {
+      .vision__nodes { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 900px) {
+      .vision__nodes { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .vision-node {
+      padding: var(--sp-8);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      transition: border-color var(--duration-mid);
+    }
+
+    .vision-node:hover { border-color: var(--border-hover); }
+
+    .vision-node__icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      /* Emoji icons — replace with inline SVGs for better control */
+    }
+
+    .vision-node__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      line-height: 1.2;
+      color: var(--fg);
+    }
+
+    .vision-node__body {
+      font-size: var(--text-sm);
+      line-height: 1.65;
+      color: var(--fg-muted);
+    }
+
+    /* ─────────────────────────────────────────────
+       PROJECTS SECTION — Asmile, Libera il tuo Movimento, Shoepei
+    ───────────────────────────────────────────── */
+    .projects {
+      background: var(--bg);
+    }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+      margin-top: var(--sp-12);
+    }
+
+    @media (min-width: 700px) {
+      .projects__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1000px) {
+      .projects__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .project-card {
+      padding: var(--sp-8);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      transition: border-color var(--duration-mid), transform var(--duration-mid);
+      cursor: default;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .project-card__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      background: var(--accent-dim);
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .project-card__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      line-height: 1.1;
+      color: var(--fg);
+    }
+
+    .project-card__body {
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      color: var(--fg-muted);
+      flex: 1;
+    }
+
+    .project-card__link {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      transition: gap var(--duration-fast);
+      text-decoration: none;
+    }
+
+    .project-card__link:hover { gap: var(--sp-3); }
+
+    .project-card__link::after { content: '→'; }
+
+    /* ─────────────────────────────────────────────
+       CTA / PARTICIPATE SECTION
+    ───────────────────────────────────────────── */
+    .participate {
+      background: var(--bg-surface);
+    }
+
+    .participate__header {
+      text-align: center;
+      max-width: 52ch;
+      margin-inline: auto;
+      margin-bottom: var(--sp-16);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+
+    .participate__cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+
+    @media (min-width: 600px) {
+      .participate__cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 900px) {
+      .participate__cards { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .participate-card {
+      padding: var(--sp-8) var(--sp-6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      text-decoration: none;
+      transition: border-color var(--duration-mid), transform var(--duration-mid), background var(--duration-mid);
+    }
+
+    .participate-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-elevated);
+      transform: translateY(-3px);
+    }
+
+    .participate-card__platform {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+    }
+
+    .participate-card__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      line-height: 1.2;
+      color: var(--fg);
+    }
+
+    .participate-card__body {
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: var(--fg-muted);
+      flex: 1;
+    }
+
+    .participate-card__cta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      transition: gap var(--duration-fast);
+      margin-top: auto;
+    }
+
+    .participate-card:hover .participate-card__cta { gap: var(--sp-3); }
+    .participate-card__cta::after { content: '→'; }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding-block: var(--sp-16);
+    }
+
+    .site-footer .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-12);
+    }
+
+    @media (min-width: 640px) {
+      .site-footer .container {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .site-footer .container {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand__name {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      line-height: 1.1;
+      color: var(--fg);
+      margin-bottom: var(--sp-4);
+    }
+
+    .footer-brand__tagline {
+      font-size: var(--text-sm);
+      color: var(--fg-muted);
+      line-height: 1.65;
+      max-width: 36ch;
+    }
+
+    .footer-brand__location {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin-top: var(--sp-6);
+    }
+
+    .footer-col__heading {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin-bottom: var(--sp-4);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+
+    .footer-links a {
+      font-size: var(--text-sm);
+      color: var(--fg-muted);
+      transition: color var(--duration-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      min-height: 44px;
+    }
+
+    .footer-links a:hover { color: var(--fg); }
+
+    .footer-bottom {
+      margin-top: var(--sp-12);
+      padding-top: var(--sp-8);
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+    }
+
+    .footer-bottom__copy {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .04em;
+      color: var(--fg-subtle);
+    }
+
+    .footer-bottom__licenses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-4);
+    }
+
+    .license-badge {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      color: var(--fg-subtle);
+      border: 1px solid var(--border);
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: color var(--duration-fast), border-color var(--duration-fast);
+    }
+
+    .license-badge:hover {
+      color: var(--fg-muted);
+      border-color: var(--fg-subtle);
+    }
+
+    /* ─────────────────────────────────────────────
+       ORCHESTRATOR ADDITIONS — copy-driven elements
+    ───────────────────────────────────────────── */
+
+    /* Hero emotional anchor — the Arianna line under the sub */
+    .hero__anchor {
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: var(--fg-subtle);
+      max-width: 46ch;
+      margin-bottom: var(--sp-8);
+      padding-left: var(--sp-4);
+      border-left: 2px solid var(--bamboo-dim);
+      animation: fadeUp .8s var(--ease-out-expo) both;
+      animation-delay: .44s;
+    }
+
+    /* Donation status line — story + participate. Update by hand. */
+    .status-line {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .04em;
+      color: var(--fg-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2) var(--sp-3);
+      align-items: baseline;
+    }
+    .status-line strong { color: var(--accent); font-weight: 500; }
+    .status-line .sep { color: var(--fg-subtle); }
+
+    /* Vision node index number (replaces emoji) */
+    .vision-node__num {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: .08em;
+      color: var(--accent);
+    }
+
+    /* Big centered pull quote (vision close) */
+    .pull-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--text-2xl);
+      line-height: 1.3;
+      color: var(--fg);
+      text-align: center;
+      max-width: 22ch;
+      margin: var(--sp-16) auto 0;
+    }
+    .pull-quote span { color: var(--accent); }
+
+    /* Project status pill (honest: in development) */
+    .project-card__status {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+    .project-card__status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--bamboo);
+    }
+
+    /* Footer signature — Narmade Har */
+    .footer-brand__signature {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--text-base);
+      color: var(--bamboo);
+      margin-top: var(--sp-6);
+    }
+
+    /* ── Recognition band — EDUKI award at the UN, Geneva ── */
+    .recognition { background: var(--bg); }
+    .recognition .container {
+      max-width: 900px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-6);
+    }
+    .award-card {
+      width: 100%;
+      border: 1px solid var(--bamboo-dim);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, var(--bamboo-dim), transparent 60%);
+      padding: var(--sp-16) var(--gutter);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+    .award-card__seal {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid var(--bamboo);
+      color: var(--bamboo);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      margin-bottom: var(--sp-2);
+    }
+    .award-card__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+      color: var(--fg);
+      max-width: 20ch;
+    }
+    .award-card__title span { color: var(--bamboo); }
+    .award-card__meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .award-card__body {
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--fg-muted);
+      max-width: 60ch;
+    }
+    .award-card__backers {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-6);
+      border-top: 1px solid var(--border);
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--sp-2) var(--sp-4);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      color: var(--fg-subtle);
+    }
+    .award-card__backers span { white-space: nowrap; }
+
+    /* Story kicker — Asmile is only the beginning */
+    .story__kicker {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--text-lg);
+      line-height: 1.35;
+      color: var(--bamboo);
+      margin-top: var(--sp-6);
+      max-width: 44ch;
+    }
+
+    /* Story card: "for a Person" name tag, honest status variants */
+    .project-card__for {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      color: var(--bamboo);
+    }
+    .project-card__status--ready::before { background: var(--accent); }
+    .project-card__status--racing::before { background: #6ee7a8; }
+
+    /* Invitation card — the next story */
+    .project-card--invite {
+      border-style: dashed;
+      border-color: var(--bamboo-dim);
+      background: transparent;
+      justify-content: center;
+      text-align: left;
+    }
+    .project-card--invite:hover { border-color: var(--bamboo); transform: translateY(-3px); }
+
+    /* Projects closing line + IG link */
+    .projects__more {
+      margin-top: var(--sp-12);
+      font-size: var(--text-base);
+      color: var(--fg-muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+    .projects__more a {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--accent);
+      display: inline-flex;
+      gap: var(--sp-2);
+    }
+    .projects__more a::after { content: '→'; }
+
+    /* ── Stay in touch — relational closing band ── */
+    .staytouch {
+      background:
+        radial-gradient(120% 120% at 50% 0%, var(--accent-dim), transparent 60%),
+        var(--bg);
+      text-align: center;
+    }
+    .staytouch .container {
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-6);
+    }
+    .staytouch__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      color: var(--fg);
+    }
+    .staytouch__title em { font-style: italic; color: var(--accent); }
+    .staytouch__body {
+      font-size: var(--text-lg);
+      line-height: 1.6;
+      color: var(--fg-muted);
+      max-width: 56ch;
+    }
+    .staytouch__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      justify-content: center;
+      margin-top: var(--sp-2);
+    }
+    .btn--lg { font-size: var(--text-base); padding: var(--sp-4) var(--sp-8); }
+
+    /* Placeholder line-art fills — replace with real photos in /assets */
+    .art-fill { width: 100%; height: 100%; display: block; }
+    .art-fill .stroke { fill: none; stroke: var(--accent); stroke-width: 2; opacity: .55; }
+    .art-fill .stroke--bamboo { stroke: var(--bamboo); opacity: .5; }
+    .art-cap {
+      position: absolute; bottom: var(--sp-4); left: 0; right: 0;
+      text-align: center;
+      font-family: var(--font-mono); font-size: var(--text-xs);
+      letter-spacing: .08em; text-transform: uppercase; color: var(--fg-subtle);
+    }
+
+    /* YouTube facade — thumbnail now, iframe only on click (zero load cost) */
+    .video-facade { aspect-ratio: 16 / 9; }
+    .video-facade__btn {
+      all: unset;
+      position: absolute; inset: 0;
+      display: block; width: 100%; height: 100%;
+      cursor: pointer;
+    }
+    .video-facade__btn img { width: 100%; height: 100%; object-fit: cover; }
+    .video-facade__btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(10,10,10,.55));
+    }
+    .video-facade__play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px; height: 68px; border-radius: 50%;
+      background: var(--accent); color: #0a0a0a;
+      display: grid; place-items: center;
+      font-size: 1.4rem; padding-left: 5px;
+      z-index: 1;
+      transition: transform var(--duration-fast), background var(--duration-fast);
+    }
+    .video-facade__btn:hover .video-facade__play,
+    .video-facade__btn:focus-visible .video-facade__play { transform: translate(-50%, -50%) scale(1.1); background: #fb923c; }
+    .video-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    /* ─────────────────────────────────────────────
+       LOAD ANIMATION (hero enters on page load)
+    ───────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero__counter  { animation: fadeUp .7s var(--ease-out-expo) both; animation-delay: .1s; }
+    .hero__headline { animation: fadeUp .8s var(--ease-out-expo) both; animation-delay: .22s; }
+    .hero__sub      { animation: fadeUp .8s var(--ease-out-expo) both; animation-delay: .36s; }
+    .hero__actions  { animation: fadeUp .8s var(--ease-out-expo) both; animation-delay: .5s; }
+  </style>
 </head>
+
 <body>
-<div class="wrap">
-<h1>Moving One Billion People</h1>
-<p class="tag">Democratize the freedom of movement.<br/>Open-source. 3D-printable. Locally manifested.</p>
-<p class="status"><span class="dot"></span>BUILDING</p>
-</div>
-<p class="foot">2026 — IN VALTELLINA</p>
+
+  <!-- ─────────────────────────────────────────────
+       ACCESSIBILITY — SKIP LINK
+  ───────────────────────────────────────────── -->
+  <a class="skip-link" href="#main-content">Vai al contenuto</a>
+
+  <!-- ─────────────────────────────────────────────
+       HEADER / NAV
+  ───────────────────────────────────────────── -->
+  <header class="site-header" role="banner" aria-label="Navigazione sito">
+    <div class="container">
+      <a class="site-logo" href="#main-content" aria-label="Moving One Billion People — pagina iniziale">
+        <span aria-hidden="true"></span>
+        1BLN
+      </a>
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a class="nav-link" href="#story">Asmile</a>
+        <a class="nav-link" href="#material">Materiali</a>
+        <a class="nav-link" href="#projects">Storie</a>
+        <a
+          class="btn btn--outline"
+          href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Sostieni Asmile su GoFundMe (si apre in una nuova scheda)"
+        >
+          Sostieni Asmile
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─────────────────────────────────────────────
+       MAIN
+  ───────────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <div class="hero__bg-numeral" aria-hidden="true">1B</div>
+
+      <div class="container">
+        <p class="hero__counter" aria-label="Un miliardo di Persone senza la libertà di muoversi">
+          1.000.000.000 di Persone — senza la libertà di muoversi
+        </p>
+
+        <h1 class="hero__headline" id="hero-headline">
+          Democratizzare<br />
+          la <em>libertà</em><br />
+          di movimento.
+        </h1>
+
+        <p class="hero__sub">
+          Esploriamo una direzione: muoversi senza lasciare traccia, con soluzioni nuove. E lungo la strada, aiutiamo le Persone a muoversi — con veicoli open-source, stampabili in 3D, fatti dove vivi. Non compriamo telai: li manifestiamo.
+        </p>
+
+        <p class="hero__anchor">
+          A Poschiavo, tre classi delle medie hanno costruito <strong style="color:var(--bamboo);font-weight:500;">Asmile</strong> insieme ad Arianna. A maggio 2026 ha gareggiato nel ciclismo agli Special Olympics di Zugo. Non l&rsquo;hanno aiutata — l&rsquo;hanno messa al centro e hanno costruito con lei.
+        </p>
+
+        <div class="hero__actions">
+          <a
+            class="btn btn--primary"
+            href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Sostieni Asmile
+          </a>
+          <a
+            class="btn btn--outline"
+            href="https://www.instagram.com/moving_one_billion_people"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Guarda il progetto
+          </a>
+          <a
+            class="btn btn--ghost"
+            href="https://github.com/rinaldiden/Moving-One-Billion-People-"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open source su GitHub"
+          >
+            ★ GitHub
+          </a>
+        </div>
+      </div>
+
+      <p class="hero__scroll-hint" aria-hidden="true">scorri</p>
+    </section>
+
+    <!-- Diagonal skew divider — decorative, aria-hidden -->
+    <div class="skew-divider" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════
+         STORY — Asmile / Arianna / Poschiavo schools
+    ══════════════════════════════════════════ -->
+    <section class="story section section--lg" id="story" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story__content reveal">
+          <p class="eyebrow">Olympink — Poschiavo, 2025&ndash;2026</p>
+          <h2 class="section-heading" id="story-heading">
+            Non hanno aiutato Arianna.<br />Hanno costruito <em style="font-style:italic;color:var(--accent)">con</em> lei.
+          </h2>
+
+          <p class="body-text">
+            Tre classi della scuola media di Poschiavo, in Svizzera, hanno passato mesi a costruire <strong style="color:var(--fg);font-weight:600;">Asmile</strong> — un triciclo a guida autonoma: sensori AI che rilevano gli ostacoli, sterzata e frenata autonome, un telaio basso pensato per il corpo di Arianna, ruote larghe, manubrio ricurvo e uno schienale.
+          </p>
+
+          <p class="body-text">
+            Arianna ha 23 anni. È di Soglio, in Val Bregaglia. Ha una malattia genetica rara. E un sorriso travolgente. Il progetto scolastico si chiama <strong style="color:var(--fg);font-weight:600;">Olympink</strong> — rosa, il suo colore preferito. A fine maggio 2026 ha gareggiato nel ciclismo agli Special Olympics Swiss National Summer Games di Zugo. Il volante lo teneva lei. L&rsquo;autonomia eseguiva il suo desiderio — l&rsquo;unica direzione in cui questa tecnologia può andare.
+          </p>
+
+          <blockquote class="story__quote">
+            &laquo;L&rsquo;inclusione non è il contenuto del progetto. È la forma del cantiere.&raquo;
+          </blockquote>
+
+          <p class="status-line" aria-label="Stato della raccolta fondi, aggiornato manualmente">
+            <strong>&euro;18.061</strong> raccolti
+            <span class="sep">·</span> 166 Persone
+            <span class="sep">·</span> Obiettivo &euro;30.000
+          </p>
+
+          <p style="margin-top: var(--sp-2);">
+            <a
+              class="btn btn--primary"
+              href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Leggi la storia e sostieni Asmile</a>
+          </p>
+
+          <p class="story__kicker">
+            Asmile è il primo veicolo — non l&rsquo;ultimo. Un progetto: l&rsquo;inizio di un movimento verso il miliardo.
+          </p>
+        </div>
+
+        <!-- Public YouTube film "OLYMPINK & ASMILE" (Daniele Rinaldi). Facade: iframe loads only on click. -->
+        <figure class="story__image-wrap video-facade reveal reveal--delay-2">
+          <button class="video-facade__btn" data-video="bjYZa1M4Wk4" aria-label="Guarda il film: OLYMPINK & ASMILE (YouTube)">
+            <img
+              src="assets/asmile-video.jpg"
+              width="1280" height="720"
+              loading="lazy" decoding="async"
+              alt="I cartelloni del progetto Olympink e il telaio di Asmile con i giunti rosa, a un&rsquo;esposizione pubblica"
+            />
+            <span class="video-facade__play" aria-hidden="true">▶</span>
+          </button>
+          <figcaption class="art-cap">OLYMPINK &amp; ASMILE · guarda il film</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         RECOGNITION — EDUKI award at the UN, Geneva
+    ══════════════════════════════════════════ -->
+    <section class="recognition section section--lg" id="recognition" aria-labelledby="recognition-heading">
+      <div class="container">
+        <p class="eyebrow" style="justify-content:center;">Riconoscimento — Ginevra, maggio 2026</p>
+        <div class="award-card reveal">
+          <span class="award-card__seal" aria-hidden="true">★</span>
+          <h2 class="award-card__title" id="recognition-heading">
+            Premiati alle <span>Nazioni Unite</span>, Ginevra.
+          </h2>
+          <p class="award-card__meta">EDUKI 2025/26 · categoria &laquo;Azioni Concrete&raquo;</p>
+          <p class="award-card__body">
+            Gli studenti di Poschiavo hanno vinto il concorso nazionale EDUKI &mdash; tema <em style="color:var(--fg);font-style:italic;">&laquo;Interconnessi: umano · digitale · sostenibile&raquo;</em> &mdash; con <strong style="color:var(--fg);font-weight:600;">Olympink</strong> e la bici Asmile. Il premio è stato ritirato al <strong style="color:var(--fg);font-weight:600;">Palais des Nations</strong>, sede dell&rsquo;ONU a Ginevra.
+          </p>
+          <p class="award-card__backers" aria-label="Concorso sostenuto da">
+            <span>ONU Ginevra</span><span>·</span>
+            <span>ITU</span><span>·</span>
+            <span>Commissione svizzera UNESCO</span><span>·</span>
+            <span>Fondation pour Genève</span><span>·</span>
+            <span>Associazione Movimento, Poschiavo</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         MATERIAL — bamboo + Balena Science + biodegradable
+    ══════════════════════════════════════════ -->
+    <section class="material section section--lg" id="material" aria-labelledby="material-heading">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">Materiali</p>
+          <h2 class="section-heading" id="material-heading">
+            Siamo terra.<br />Come tutto ciò che costruiamo.
+          </h2>
+
+          <p class="body-text" style="margin-top: var(--sp-6);">
+            La <strong style="color:var(--fg);font-weight:600;">5/1bln</strong> è una bici in bambù — costruita fisicamente, giunto dopo giunto, in Valtellina. Un miliardo di Persone va mosso senza lasciare traccia del nostro passaggio sulla Terra. Per questo il materiale non è estetica. È identità: se non torna alla terra, non esce dal cantiere.
+          </p>
+
+          <p class="body-text" style="margin-top: var(--sp-4);">
+            Per le parti stampate, plastiche biobased e biodegradabili — materiali a base PHA che tornano alla terra, e filamenti a base di alghe che stiamo testando. E il globale è un miliardo di locali: ogni veicolo è stampato dove sta il corpo, con una stampante desktop, tubi e giunti stampati. Zero fabbrica, zero spedizioni. File aperti.
+          </p>
+
+          <p class="material__badge" style="margin-top: var(--sp-6);" aria-label="Materiali che tornano alla terra">
+            Torna alla terra · biodegradabile per scelta
+          </p>
+
+          <dl class="material__specs" aria-label="Specifiche dei materiali">
+            <div class="spec-row">
+              <dt class="spec-row__label">Materiale</dt>
+              <dd class="spec-row__value">Bambù Moso · plastiche biobased e biodegradabili</dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-row__label">Processo</dt>
+              <dd class="spec-row__value">Stampa 3D distribuita · colle naturali · giunti stampati</dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-row__label">Fine vita</dt>
+              <dd class="spec-row__value">Ritorno al suolo — nessuna traccia</dd>
+            </div>
+            <div class="spec-row">
+              <dt class="spec-row__label">Licenza</dt>
+              <dd class="spec-row__value">CERN-OHL-S (hardware) + GPL-3.0 (software)</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Real photo: the 5/1bln bamboo bike. NOTE: currently a 240×320 email thumbnail —
+             replace with the full-resolution original for a crisp render on large screens. -->
+        <figure class="material__image-wrap reveal reveal--delay-2">
+          <img
+            src="assets/material-bamboo.jpg"
+            width="240" height="320"
+            loading="lazy" decoding="async"
+            alt="La 5/1bln — un telaio di bici in bambù fatto a mano con dettagli rosa, in un frutteto verde della Valtellina"
+          />
+          <figcaption class="art-cap">La 5/1bln · bambù Moso · Valtellina</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         VISION — propagation: schools → RSA / disability centers
+    ══════════════════════════════════════════ -->
+    <section class="vision section section--lg" id="vision" aria-labelledby="vision-heading">
+      <div class="container">
+        <header class="vision__header reveal">
+          <p class="eyebrow">Ciò che si propaga</p>
+          <h2 class="section-heading" id="vision-heading">
+            Una scuola insegna alla successiva.<br />Nessuno cala dall&rsquo;alto.
+          </h2>
+          <p class="body-text" style="text-align:center;">
+            Il piano non è scalare. Il piano è propagarsi — da pari a pari, da scuola a scuola, da quartiere a quartiere. I ragazzi costruiscono insieme alle Persone che hanno bisogno del veicolo. Due mondi tenuti separati si incontrano nel cantiere. Nessuno è di scarto. Nessuno è una mascotte.
+          </p>
+        </header>
+
+        <ul class="vision__nodes" aria-label="Come si propaga il movimento">
+
+          <li class="vision-node reveal reveal--delay-1">
+            <span class="vision-node__num" aria-hidden="true">01</span>
+            <h3 class="vision-node__title">I ragazzi costruiscono</h3>
+            <p class="vision-node__body">
+              Progettano, stampano e assemblano un veicolo vero — insieme a un compagno che ne ha bisogno. Non un compito. Una strada.
+            </p>
+          </li>
+
+          <li class="vision-node reveal reveal--delay-2">
+            <span class="vision-node__num" aria-hidden="true">02</span>
+            <h3 class="vision-node__title">Case di riposo e centri per disabilità</h3>
+            <p class="vision-node__body">
+              Vogliamo questa bici in ogni casa di riposo e centro per Persone con disabilità. Il volante lo tiene lei: dice cosa le serve, prova, corregge, dirige. I ragazzi sono le sue mani.
+            </p>
+          </li>
+
+          <li class="vision-node reveal reveal--delay-3">
+            <span class="vision-node__num" aria-hidden="true">03</span>
+            <h3 class="vision-node__title">Si propaga per contagio</h3>
+            <p class="vision-node__body">
+              Una scuola costruisce, poi insegna alla successiva. I file restano aperti, il maker tiene il margine. Daniele è trim tab, non motore.
+            </p>
+          </li>
+
+        </ul>
+
+        <p class="pull-quote reveal">&laquo;Ciò che si muove è il <span>legame</span>, non il corpo.&raquo;</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PROJECTS — Asmile, Libera il tuo Movimento, Shoepei
+    ══════════════════════════════════════════ -->
+    <section class="projects section section--lg" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <header class="reveal">
+          <p class="eyebrow">Storie — la prima di un miliardo</p>
+          <h2 class="section-heading" id="projects-heading">
+            Ogni veicolo nasce<br />per una Persona.
+          </h2>
+          <p class="body-text" style="margin-top:var(--sp-6);">
+            Asmile è nata per Arianna. Non sarà l&rsquo;ultima. Ogni veicolo parte da un bisogno vero — e i file restano aperti, così la prossima persona, ovunque, può costruire il prossimo. C&rsquo;è tanto da raccontare.
+          </p>
+        </header>
+
+        <ul class="projects__grid" aria-label="Veicoli e storie">
+
+          <li class="project-card reveal reveal--delay-1" aria-labelledby="project-asmile">
+            <span class="project-card__tag">Triciclo</span>
+            <h3 class="project-card__title" id="project-asmile">Asmile</h3>
+            <p class="project-card__for">per Arianna</p>
+            <p class="project-card__body">
+              Un triciclo a guida autonoma — sensori AI, sterzata e frenata autonome. Ha gareggiato agli Special Olympics di Zugo. Ha vinto il premio EDUKI all&rsquo;ONU di Ginevra.
+            </p>
+            <span class="project-card__status project-card__status--racing">In gara</span>
+            <a
+              class="project-card__link"
+              href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="La storia di Asmile su GoFundMe (si apre in una nuova scheda)"
+            >La storia</a>
+          </li>
+
+          <li class="project-card reveal reveal--delay-2" aria-labelledby="project-tommi">
+            <span class="project-card__tag">Tandem</span>
+            <h3 class="project-card__title" id="project-tommi">Tommi</h3>
+            <p class="project-card__for">stampato in 3D · pronto</p>
+            <p class="project-card__body">
+              Un tandem, stampato in 3D e pronto per essere liberato — file open-source, così chiunque può stamparlo e pedalare in due. Pedalare non è mai da soli.
+            </p>
+            <span class="project-card__status project-card__status--ready">Pronto per essere liberato</span>
+            <a
+              class="project-card__link"
+              href="https://www.instagram.com/moving_one_billion_people"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Tommi su Instagram (si apre in una nuova scheda)"
+            >Guardalo</a>
+          </li>
+
+          <li class="project-card reveal reveal--delay-3" aria-labelledby="project-mimma">
+            <span class="project-card__tag">Carrozzina</span>
+            <h3 class="project-card__title" id="project-mimma">Mimma</h3>
+            <p class="project-card__for">la strada per Santiago</p>
+            <p class="project-card__body">
+              Stiamo rifacendo la carrozzina per portare Mimma fino a Santiago. La prima di un miliardo. Documentata, passo dopo passo, su Instagram.
+            </p>
+            <span class="project-card__status">In cantiere</span>
+            <a
+              class="project-card__link"
+              href="https://www.instagram.com/moving_one_billion_people"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Il viaggio di Mimma su Instagram (si apre in una nuova scheda)"
+            >Seguila</a>
+          </li>
+
+          <li class="project-card reveal reveal--delay-1" aria-labelledby="project-libera">
+            <span class="project-card__tag">Strumento</span>
+            <h3 class="project-card__title" id="project-libera">Libera il tuo Movimento</h3>
+            <p class="project-card__for">testo → G-code</p>
+            <p class="project-card__body">
+              Una pipeline AI multi-agente: dal linguaggio naturale al G-code per giunti di telaio stampabili. Descrivi ciò che ti serve; il sistema stampa il giunto. Non il bambù — il giunto, liberato.
+            </p>
+            <span class="project-card__status">In sviluppo</span>
+            <a
+              class="project-card__link"
+              href="https://github.com/rinaldiden/Moving-One-Billion-People-"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Libera il tuo Movimento su GitHub (si apre in una nuova scheda)"
+            >Vedi su GitHub</a>
+          </li>
+
+          <li class="project-card reveal reveal--delay-2" aria-labelledby="project-shoepei">
+            <span class="project-card__tag">Calzatura</span>
+            <h3 class="project-card__title" id="project-shoepei">Shoepei</h3>
+            <p class="project-card__for">ritorno alla terra</p>
+            <p class="project-card__body">
+              Una scarpa stampata in 3D, biodegradabile. Il primo passo verso una mobilità che torna alla terra — dalla suola in su.
+            </p>
+            <span class="project-card__status">In sviluppo</span>
+            <a
+              class="project-card__link"
+              href="https://github.com/rinaldiden/Moving-One-Billion-People-"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Shoepei su GitHub (si apre in una nuova scheda)"
+            >Vedi su GitHub</a>
+          </li>
+
+          <li class="project-card project-card--invite reveal reveal--delay-3" aria-labelledby="project-next">
+            <span class="project-card__tag">La prossima</span>
+            <h3 class="project-card__title" id="project-next">La tua storia</h3>
+            <p class="project-card__for">una scuola · una casa · una comunità</p>
+            <p class="project-card__body">
+              Qualcuno vicino a te non può muoversi liberamente? Parti da lì. Costruisci con loro, non per loro — e raccontacelo. Il prossimo veicolo è tuo da manifestare.
+            </p>
+            <a
+              class="project-card__link"
+              href="mailto:daniele@movingonebillionpeople.org"
+              aria-label="Scrivi a Daniele per iniziare una storia"
+            >Scrivi a Daniele</a>
+          </li>
+
+        </ul>
+
+        <p class="projects__more reveal">
+          Nuove storie arrivano di continuo — pedalata dopo pedalata, giunto dopo giunto.
+          <a href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Seguile su Instagram</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PARTICIPATE — GoFundMe, Instagram, GitHub, Ko-fi, PayPal
+    ══════════════════════════════════════════ -->
+    <section class="participate section section--lg" id="participate" aria-labelledby="participate-heading">
+      <div class="container">
+        <header class="participate__header reveal">
+          <p class="eyebrow">Partecipa</p>
+          <h2 class="section-heading" id="participate-heading">
+            Ogni porta è aperta.<br /><em style="font-style:italic; color:var(--accent)">Scegli la tua.</em>
+          </h2>
+          <p class="body-text" style="text-align:center;">
+            Sostieni Arianna, costruisci con noi, segui il cantiere o scrivi. Ogni contributo — un euro, un commit, una condivisione — avvicina un corpo alla libertà.
+          </p>
+        </header>
+
+        <ul class="participate__cards" aria-label="Ways to participate">
+
+          <li>
+            <a
+              class="participate-card reveal reveal--delay-1"
+              href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Sostieni su GoFundMe (si apre in una nuova scheda)"
+            >
+              <span class="participate-card__platform">GoFundMe</span>
+              <span class="participate-card__title">Sostieni Arianna</span>
+              <span class="participate-card__body">&euro;18.061 raccolti verso &euro;30.000. Ogni euro va ad Asmile — componenti, sensori, allenamenti.</span>
+              <span class="participate-card__cta" aria-hidden="true">Sostieni</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="participate-card reveal reveal--delay-2"
+              href="https://www.instagram.com/moving_one_billion_people"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Segui su Instagram (si apre in una nuova scheda)"
+            >
+              <span class="participate-card__platform">Instagram</span>
+              <span class="participate-card__title">Segui il cantiere</span>
+              <span class="participate-card__body">Passo dopo passo, materiale dopo materiale, giunto dopo giunto. Ogni condivisione raggiunge un nuovo costruttore.</span>
+              <span class="participate-card__cta" aria-hidden="true">Segui</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="participate-card reveal reveal--delay-3"
+              href="https://github.com/rinaldiden/Moving-One-Billion-People-"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contribuisci su GitHub (si apre in una nuova scheda)"
+            >
+              <span class="participate-card__platform">GitHub</span>
+              <span class="participate-card__title">Costruisci con noi</span>
+              <span class="participate-card__body">File, giunti, codice — tutto aperto. Fai il fork, miglioralo, costruisci dove sei.</span>
+              <span class="participate-card__cta" aria-hidden="true">Fai il fork</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              class="participate-card reveal reveal--delay-4"
+              href="https://ko-fi.com/danielerinaldi"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Sostieni su Ko-fi (si apre in una nuova scheda)"
+            >
+              <span class="participate-card__platform">Ko-fi · PayPal</span>
+              <span class="participate-card__title">Alimenta il cantiere</span>
+              <span class="participate-card__body">Un piccolo sostegno tiene vivo il laboratorio — componenti, filamento, sensori. Ko-fi o <a href="https://paypal.me/Rinaldiden1991" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">PayPal</a>.</span>
+              <span class="participate-card__cta" aria-hidden="true">Sostieni</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         STAY IN TOUCH — relational closing CTA
+    ══════════════════════════════════════════ -->
+    <section class="staytouch section section--lg" id="stay" aria-labelledby="stay-heading">
+      <div class="container">
+        <p class="eyebrow" style="justify-content:center;">Restiamo in contatto</p>
+        <h2 class="staytouch__title reveal" id="stay-heading">
+          È un viaggio.<br /><em>Vieni con noi.</em>
+        </h2>
+        <p class="staytouch__body reveal">
+          Asmile è stata la prima. Tommi, Mimma e un miliardo di altre stanno arrivando. Segui il cantiere mentre accade — e se vuoi portare un veicolo nella tua scuola, nella tua casa o nella tua comunità, scrivici. Rispondiamo, sempre.
+        </p>
+        <div class="staytouch__actions reveal">
+          <a
+            class="btn btn--primary btn--lg"
+            href="https://www.instagram.com/moving_one_billion_people"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Segui il viaggio</a>
+          <a
+            class="btn btn--outline btn--lg"
+            href="mailto:daniele@movingonebillionpeople.org?subject=Moving%20One%20Billion%20People%20%E2%80%94%20restiamo%20in%20contatto"
+          >Scrivici</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─────────────────────────────────────────────
+       FOOTER
+  ───────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo" aria-label="Piè di pagina">
+    <div class="container">
+      <div class="footer-brand">
+        <p class="footer-brand__name">Moving One Billion People</p>
+        <p class="footer-brand__tagline">
+          Veicoli open-source che democratizzano la libertà di movimento — stampabili in 3D, fatti dove vivi, che tornano alla terra. Per un miliardo di Persone.
+        </p>
+        <p class="footer-brand__signature" lang="hi" title="I recognize the divine in you — the greeting between pilgrims on the Narmada">Narmade Har.</p>
+        <p class="footer-brand__location">Tirano · Valtellina — 2026</p>
+      </div>
+
+      <nav aria-label="Navigazione footer — link">
+        <p class="footer-col__heading">Link</p>
+        <ul class="footer-links">
+          <li><a href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile" target="_blank" rel="noopener noreferrer">GoFundMe</a></li>
+          <li><a href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://github.com/rinaldiden/Moving-One-Billion-People-" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://ko-fi.com/danielerinaldi" target="_blank" rel="noopener noreferrer">Ko-fi</a></li>
+          <li><a href="https://paypal.me/Rinaldiden1991" target="_blank" rel="noopener noreferrer">PayPal</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Navigazione footer — contatti">
+        <p class="footer-col__heading">Contatti</p>
+        <ul class="footer-links">
+          <li>
+            <a href="mailto:daniele@movingonebillionpeople.org">
+              daniele@movingonebillionpeople.org
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">
+          &copy; 2026 Moving One Billion People. Open source.
+        </p>
+        <div class="footer-bottom__licenses">
+          <a
+            class="license-badge"
+            href="https://cern-ohl.web.cern.ch/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="CERN Open Hardware License Strongly Reciprocal"
+          >CERN-OHL-S</a>
+          <a
+            class="license-badge"
+            href="https://www.gnu.org/licenses/gpl-3.0.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GNU General Public License version 3"
+          >GPL-3.0</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─────────────────────────────────────────────
+       PROGRESSIVE ENHANCEMENT — JS
+       The page is 100% usable without this block.
+       This adds: header scroll state, reveal-on-scroll.
+  ───────────────────────────────────────────── -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Header: add .scrolled when page is scrolled
+      var header = document.querySelector('.site-header');
+      if (header) {
+        var onScroll = function () {
+          header.classList.toggle('scrolled', window.scrollY > 20);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // 1b. YouTube facade — load the iframe only when the user clicks Play
+      document.querySelectorAll('.video-facade__btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-video');
+          var iframe = document.createElement('iframe');
+          iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+          iframe.title = 'OLYMPINK & ASMILE';
+          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+          iframe.setAttribute('allowfullscreen', '');
+          btn.replaceWith(iframe);
+        });
+      });
+
+      // 2. Reveal on scroll via IntersectionObserver
+      //    Fallback: if IO not supported, elements stay visible (opacity:0 removed)
+      var reveals = document.querySelectorAll('.reveal');
+
+      if (!reveals.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        // Fallback: make all visible immediately
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+      );
+
+      reveals.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
 </body>
 </html>
