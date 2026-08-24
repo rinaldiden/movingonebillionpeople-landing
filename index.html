@@ -1371,6 +1371,10 @@
     .video-facade__btn:focus-visible .video-facade__play { transform: translate(-50%, -50%) scale(1.1); background: #fb923c; }
     .video-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
+    /* Direct YouTube embed — always visible as a player */
+    .video-embed { aspect-ratio: 16 / 9; }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
     /* ─────────────────────────────────────────────
        LOAD ANIMATION (hero enters on page load)
     ───────────────────────────────────────────── */
@@ -1527,18 +1531,16 @@
           </p>
         </div>
 
-        <!-- Public YouTube film "OLYMPINK & ASMILE" (Daniele Rinaldi). Facade: iframe loads only on click. -->
-        <figure class="story__image-wrap video-facade reveal reveal--delay-2">
-          <button class="video-facade__btn" data-video="bjYZa1M4Wk4" aria-label="Guarda il film: OLYMPINK & ASMILE (YouTube)">
-            <img
-              src="assets/asmile-video.jpg"
-              width="1280" height="720"
-              loading="lazy" decoding="async"
-              alt="I cartelloni del progetto Olympink e il telaio di Asmile con i giunti rosa, a un&rsquo;esposizione pubblica"
-            />
-            <span class="video-facade__play" aria-hidden="true">▶</span>
-          </button>
-          <figcaption class="art-cap">OLYMPINK &amp; ASMILE · guarda il film</figcaption>
+        <!-- Public YouTube film "OLYMPINK & ASMILE" (Daniele Rinaldi) — embedded and visible, lazy-loaded -->
+        <figure class="story__image-wrap video-embed reveal reveal--delay-2">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/bjYZa1M4Wk4?rel=0"
+            title="OLYMPINK &amp; ASMILE"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </figure>
       </div>
     </section>
