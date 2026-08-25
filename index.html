@@ -1493,6 +1493,39 @@
       justify-content: center;
     }
     .story-card--invite .story-card__body { justify-content: center; min-height: 380px; }
+
+    /* Stats — il movimento in numeri (filo conduttore, spunto da Lovable ma onesto) */
+    .stats { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats__row {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-8);
+      text-align: center;
+    }
+    .stats__num {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      line-height: 1;
+      color: var(--accent);
+    }
+    .stats__num small {
+      color: var(--fg-muted);
+      font-size: .36em;
+      font-family: var(--font-mono);
+      font-weight: 400;
+      letter-spacing: .02em;
+    }
+    .stats__label {
+      margin-top: var(--sp-3);
+      color: var(--fg-muted);
+      font-size: var(--text-sm);
+      line-height: 1.4;
+    }
+    @media (max-width: 560px) {
+      .stats__row { grid-template-columns: 1fr; gap: var(--sp-8); }
+    }
   </style>
 </head>
 
@@ -1686,6 +1719,28 @@
           Nuove storie di continuo — pedalata dopo pedalata, giunto dopo giunto.
           <a href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Seguile su Instagram</a>
         </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         STATS — il movimento in numeri (filo conduttore)
+    ══════════════════════════════════════════ -->
+    <section class="stats section" aria-label="Il movimento in numeri" style="padding-block: var(--sp-16);">
+      <div class="container">
+        <ul class="stats__row">
+          <li class="reveal">
+            <p class="stats__num">7<small> / 1 mld</small></p>
+            <p class="stats__label">Persone già in movimento</p>
+          </li>
+          <li class="reveal reveal--delay-1">
+            <p class="stats__num">100<small>%</small></p>
+            <p class="stats__label">File open-source · stampi dove vivi</p>
+          </li>
+          <li class="reveal reveal--delay-2">
+            <p class="stats__num">0</p>
+            <p class="stats__label">Tracce sulla Terra · torna al suolo</p>
+          </li>
+        </ul>
       </div>
     </section>
 
