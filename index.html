@@ -1387,6 +1387,112 @@
     .hero__headline { animation: fadeUp .8s var(--ease-out-expo) both; animation-delay: .22s; }
     .hero__sub      { animation: fadeUp .8s var(--ease-out-expo) both; animation-delay: .36s; }
     .hero__actions  { animation: fadeUp .8s var(--ease-out-expo) both; animation-delay: .5s; }
+    /* Hero live counter — conta da 1 a 7 / 1.000.000.000 */
+    .hero__live { margin: var(--sp-8) 0 var(--sp-6); }
+    .hero__live-num {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      line-height: .95;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .hero__live-num #mobp-count { font-variant-numeric: tabular-nums; }
+    .hero__live-den {
+      font-family: var(--font-mono);
+      font-size: clamp(.9rem, 2vw, 1.35rem);
+      font-weight: 400;
+      color: var(--fg-muted);
+      margin-left: .35em;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .hero__live-label {
+      margin-top: var(--sp-3);
+      color: var(--fg-muted);
+      max-width: 44ch;
+      line-height: 1.5;
+    }
+
+    /* Stories — striscia orizzontale scorrevole */
+    .stories__strip {
+      list-style: none;
+      display: flex;
+      gap: var(--sp-4);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: var(--sp-6) var(--sp-6) var(--sp-8);
+      margin-top: var(--sp-8);
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    @media (min-width: 1180px) {
+      .stories__strip { padding-inline: calc((100vw - 1080px) / 2); }
+    }
+    .stories__strip::-webkit-scrollbar { height: 8px; }
+    .stories__strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    .story-card {
+      flex: 0 0 auto;
+      width: min(80vw, 320px);
+      scroll-snap-align: start;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .story-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      background: var(--border);
+    }
+    .story-card__body {
+      padding: var(--sp-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      flex: 1;
+    }
+    .story-card__num {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      color: var(--accent);
+    }
+    .story-card__name {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      line-height: 1.1;
+      color: var(--fg);
+    }
+    .story-card__line {
+      color: var(--fg-muted);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .story-card__door {
+      align-self: flex-start;
+      margin-top: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .04em;
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+    }
+    .story-card__door:hover { color: var(--accent); }
+    .story-card--invite {
+      background: transparent;
+      border-style: dashed;
+      justify-content: center;
+    }
+    .story-card--invite .story-card__body { justify-content: center; min-height: 380px; }
   </style>
 </head>
 
@@ -1407,17 +1513,14 @@
         1BLN
       </a>
       <nav class="site-nav" aria-label="Navigazione principale">
-        <a class="nav-link" href="#story">Asmile</a>
-        <a class="nav-link" href="#material">Materiali</a>
         <a class="nav-link" href="#projects">Storie</a>
+        <a class="nav-link" href="#material">Materiali</a>
         <a
           class="btn btn--outline"
-          href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Sostieni Asmile su GoFundMe (si apre in una nuova scheda)"
+          href="#participate"
+          aria-label="Entra nel movimento"
         >
-          Sostieni Asmile
+          Entra nel movimento
         </a>
       </nav>
     </div>
@@ -1446,29 +1549,24 @@
         </h1>
 
         <p class="hero__sub">
-          Esploriamo una direzione: muoversi senza lasciare traccia, con soluzioni nuove. E lungo la strada, aiutiamo le Persone a muoversi — con veicoli open-source, stampabili in 3D, fatti dove vivi. Non compriamo telai: li manifestiamo.
+          Non è un prodotto: è un movimento. Muoverci senza lasciare traccia sulla Terra — con veicoli open-source, stampati in 3D dove vivi, costruiti <strong style="color:var(--fg);font-weight:600;">con</strong> le Persone, non per loro. Non compriamo telai: li manifestiamo.
         </p>
 
-        <p class="hero__anchor">
-          A Poschiavo, tre classi delle medie hanno costruito <strong style="color:var(--bamboo);font-weight:500;">Asmile</strong> insieme ad Arianna. A maggio 2026 ha gareggiato nel ciclismo agli Special Olympics di Zugo. Non l&rsquo;hanno aiutata — l&rsquo;hanno messa al centro e hanno costruito con lei.
-        </p>
+        <div class="hero__live" aria-label="7 Persone su un miliardo sono già in movimento">
+          <p class="hero__live-num">
+            <span id="mobp-count" data-from="1" data-to="7">1</span><span class="hero__live-den">/&thinsp;1.000.000.000</span>
+          </p>
+          <p class="hero__live-label">
+            Persone già in movimento — <strong style="color:var(--bamboo);font-weight:500;">Alberto</strong> sullo Stelvio, <strong style="color:var(--bamboo);font-weight:500;">Arianna</strong> in gara, <strong style="color:var(--bamboo);font-weight:500;">Tommi</strong> in tandem. Il prossimo posto è tuo.
+          </p>
+        </div>
 
         <div class="hero__actions">
           <a
             class="btn btn--primary"
-            href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#participate"
           >
-            Sostieni Asmile
-          </a>
-          <a
-            class="btn btn--outline"
-            href="https://www.instagram.com/moving_one_billion_people"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Guarda il progetto
+            Entra nel movimento
           </a>
           <a
             class="btn btn--ghost"
@@ -1489,22 +1587,142 @@
     <div class="skew-divider" aria-hidden="true"></div>
 
     <!-- ══════════════════════════════════════════
+         STORIE — striscia orizzontale (Persone già in movimento)
+    ══════════════════════════════════════════ -->
+    <section class="stories section section--lg" id="projects" aria-labelledby="stories-heading">
+      <div class="container">
+        <header class="reveal">
+          <p class="eyebrow">Le storie — già in movimento</p>
+          <h2 class="section-heading" id="stories-heading">
+            Nomi veri. Sorrisi veri.<br />Il prossimo <em style="font-style:italic;color:var(--accent)">è tuo</em>.
+          </h2>
+          <p class="body-text" style="margin-top:var(--sp-6);">
+            Ogni Persona ha il suo numero sul cammino verso il miliardo. Ecco le prime — scorri.
+          </p>
+        </header>
+      </div>
+
+      <ul class="stories__strip" aria-label="Storie di Persone già in movimento">
+
+        <li class="story-card reveal">
+          <img src="assets/stories/story-stefano.jpg" width="640" height="800" loading="lazy" decoding="async"
+               alt="La carrozzina stampata in 3D per Stefano — la 1/1billion del movimento" />
+          <div class="story-card__body">
+            <span class="story-card__num">1 / 1.000.000.000</span>
+            <h3 class="story-card__name">Mimma &amp; Stefano</h3>
+            <p class="story-card__line">La loro volontà: fare insieme il <strong style="color:var(--fg);font-weight:600;">Cammino di Santiago</strong>. Una carrozzina stampata in 3D per Stefano, la mamma Mimma al suo fianco — passo dopo passo, la stiamo liberando.</p>
+            <a class="story-card__door" href="mailto:daniele@movingonebillionpeople.org?subject=Sostieni%20il%20Cammino%20di%20Mimma%20e%20Stefano%20verso%20Santiago">Libera la loro storia →</a>
+          </div>
+        </li>
+
+        <li class="story-card reveal">
+          <img src="assets/stories/story-bellini.jpg" width="1000" height="590" loading="lazy" decoding="async"
+               alt="Alex Bellini e Ale Plona con le fatbike Impact nel paesaggio innevato dell'Alaska" />
+          <div class="story-card__body">
+            <span class="story-card__num">2 / 1.000.000.000</span>
+            <h3 class="story-card__name">Ale Plona &amp; Alex Bellini</h3>
+            <p class="story-card__line">1.800 km attraverso l&rsquo;Alaska sulle due fatbike <strong style="color:var(--fg);font-weight:600;">Impact</strong> — telaio stampato in 3D in plastica riciclata, nate in Valtellina. Anchorage&ndash;Nome, 37 giorni.</p>
+            <a class="story-card__door" href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Guarda su Instagram →</a>
+          </div>
+        </li>
+
+        <li class="story-card reveal">
+          <img src="assets/stories/story-plona.jpg" width="640" height="640" loading="lazy" decoding="async"
+               alt="Le due fatbike Impact col telaio stampato in 3D, la più leggera con i giunti stampati" />
+          <div class="story-card__body">
+            <span class="story-card__num">3 / 1.000.000.000</span>
+            <h3 class="story-card__name">Ale Plona &amp; Alex Bellini</h3>
+            <p class="story-card__line">1.800 km attraverso l&rsquo;Alaska sulle due fatbike <strong style="color:var(--fg);font-weight:600;">Impact</strong> — telaio stampato in 3D in plastica riciclata, nate in Valtellina. Anchorage&ndash;Nome, 37 giorni.</p>
+            <a class="story-card__door" href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Guarda su Instagram →</a>
+          </div>
+        </li>
+
+        <li class="story-card reveal">
+          <img src="assets/stories/story-alberto-stelvio.jpg" width="640" height="640" loading="lazy" decoding="async"
+               alt="Alberto in cima al Passo dello Stelvio con una bici stampata in 3D" />
+          <div class="story-card__body">
+            <span class="story-card__num">4 / 1.000.000.000</span>
+            <h3 class="story-card__name">Alberto</h3>
+            <p class="story-card__line">In cima al Passo dello Stelvio, su una bici stampata in 3D. Il numero da cui parte il contatore.</p>
+            <a class="story-card__door" href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Guarda su Instagram →</a>
+          </div>
+        </li>
+
+        <li class="story-card reveal">
+          <img src="assets/stories/2026-02-12_250like.jpg" width="640" height="640" loading="lazy" decoding="async"
+               alt="Arianna sorride accanto ad Asmile, il triciclo rosa a guida autonoma" />
+          <div class="story-card__body">
+            <span class="story-card__num">5 / 1.000.000.000</span>
+            <h3 class="story-card__name">Arianna &amp; Asmile</h3>
+            <p class="story-card__line">Il triciclo a guida autonoma costruito con lei. A Zugo ha gareggiato pedalando da sola. Premiato all&rsquo;ONU.</p>
+            <a class="story-card__door" href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile" target="_blank" rel="noopener noreferrer">Sostieni Asmile →</a>
+          </div>
+        </li>
+
+        <li class="story-card reveal">
+          <img src="assets/stories/story-tommi-tandem.jpg" width="640" height="640" loading="lazy" decoding="async"
+               alt="Tommi e Riccardo su un tandem stampato in 3D sul Sentiero Valtellina" />
+          <div class="story-card__body">
+            <span class="story-card__num">7 / 1.000.000.000</span>
+            <h3 class="story-card__name">Tommi</h3>
+            <p class="story-card__line">Il tandem stampato in 3D che sfreccia sul Sentiero Valtellina. File aperti: stampalo, forkalo, pedalate in due.</p>
+            <a class="story-card__door" href="https://github.com/rinaldiden/Moving-One-Billion-People-" target="_blank" rel="noopener noreferrer">Su GitHub →</a>
+          </div>
+        </li>
+
+        <li class="story-card story-card--invite reveal">
+          <div class="story-card__body">
+            <span class="story-card__num">? / 1.000.000.000</span>
+            <h3 class="story-card__name">La prossima sei tu</h3>
+            <p class="story-card__line">Qualcuno vicino a te non può muoversi libero? Parti da lì. Costruisci con loro, non per loro — e raccontacelo.</p>
+            <a class="story-card__door" href="mailto:daniele@movingonebillionpeople.org?subject=Voglio%20aprire%20una%20storia%20nel%20movimento">Apri una storia →</a>
+          </div>
+        </li>
+
+      </ul>
+
+      <div class="container">
+        <p class="projects__more reveal">
+          Nuove storie di continuo — pedalata dopo pedalata, giunto dopo giunto.
+          <a href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Seguile su Instagram</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PRESS — citazione Alaska (Bellini & Plona) — sobria
+    ══════════════════════════════════════════ -->
+    <aside class="section" aria-label="Ne hanno parlato" style="padding-block:var(--sp-16);border-top:1px solid var(--border);">
+      <div class="container" style="max-width:760px;text-align:center;">
+        <p class="eyebrow" style="justify-content:center;">Ne hanno parlato</p>
+        <blockquote style="font-family:var(--font-serif);font-style:italic;font-size:var(--text-lg);line-height:1.4;color:var(--fg);margin:var(--sp-4) 0 var(--sp-3);">
+          &laquo;L&rsquo;Alaska conquistata in bicicletta da Alex Bellini: al traguardo dopo 1.800&nbsp;chilometri.&raquo;
+        </blockquote>
+        <p style="color:var(--fg-muted);font-size:var(--text-sm);line-height:1.6;margin:0;">
+          Fatbike col telaio <strong style="color:var(--fg);font-weight:600;">stampato in 3D in plastica riciclata</strong>, progettate e testate in Valtellina. Con un team abbiamo accompagnato <strong style="color:var(--fg);font-weight:600;">Alessandro Plona</strong> e <strong style="color:var(--fg);font-weight:600;">Alex Bellini</strong> &mdash; 2 e 3 / 1.000.000.000 &mdash; attraverso l&rsquo;Alaska, febbraio 2024.
+        </p>
+        <p style="font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.04em;color:var(--fg-muted);margin-top:var(--sp-3);">
+          Fonti:
+          <a href="https://www.ilgiorno.it/sondrio/cronaca/alaska-conquistata-in-bicicletta-da-alex-bellini-f3c28cf8" target="_blank" rel="noopener noreferrer">Il Giorno</a> ·
+          <a href="https://www.3dnatives.com/en/alex-bellini-explore-alaska-3d-printed-bicycle-280220244/" target="_blank" rel="noopener noreferrer">3Dnatives</a> ·
+          <a href="https://www.geopop.it/in-alaska-in-bici-tra-ghiacci-neve-e-ripari-di-fortuna-lavventura-di-1800-km-di-alex-bellini/" target="_blank" rel="noopener noreferrer">Geopop</a>
+        </p>
+      </div>
+    </aside>
+
+    <!-- ══════════════════════════════════════════
          STORY — Asmile / Arianna / Poschiavo schools
     ══════════════════════════════════════════ -->
     <section class="story section section--lg" id="story" aria-labelledby="story-heading">
       <div class="container">
         <div class="story__content reveal">
-          <p class="eyebrow">Olympink — Poschiavo, 2025&ndash;2026</p>
+          <p class="eyebrow">Una storia da vicino — Arianna &amp; Asmile · 5/1bln</p>
           <h2 class="section-heading" id="story-heading">
             Non hanno aiutato Arianna.<br />Hanno costruito <em style="font-style:italic;color:var(--accent)">con</em> lei.
           </h2>
 
           <p class="body-text">
-            Tre classi della scuola media di Poschiavo, in Svizzera, hanno passato mesi a costruire <strong style="color:var(--fg);font-weight:600;">Asmile</strong> — un triciclo a guida autonoma: sensori AI che rilevano gli ostacoli, sterzata e frenata autonome, un telaio basso pensato per il corpo di Arianna, ruote larghe, manubrio ricurvo e uno schienale.
-          </p>
-
-          <p class="body-text">
-            Arianna ha 23 anni. È di Soglio, in Val Bregaglia. Ha una malattia genetica rara. E un sorriso travolgente. Il progetto scolastico si chiama <strong style="color:var(--fg);font-weight:600;">Olympink</strong> — rosa, il suo colore preferito. A fine maggio 2026 ha gareggiato nel ciclismo agli Special Olympics Swiss National Summer Games di Zugo. Il volante lo teneva lei. L&rsquo;autonomia eseguiva il suo desiderio — l&rsquo;unica direzione in cui questa tecnologia può andare.
+            Tre classi delle medie di Poschiavo hanno costruito <strong style="color:var(--fg);font-weight:600;">Asmile</strong> — un triciclo a guida autonoma — insieme ad Arianna. A giugno 2026 ha gareggiato agli Special Olympics di Zugo, pedalando da sola: il volante lo teneva lei, l&rsquo;autonomia eseguiva il suo desiderio. Non l&rsquo;hanno aiutata — l&rsquo;hanno messa al centro.
           </p>
 
           <blockquote class="story__quote">
@@ -1583,11 +1801,7 @@
           </h2>
 
           <p class="body-text" style="margin-top: var(--sp-6);">
-            La <strong style="color:var(--fg);font-weight:600;">5/1bln</strong> è una bici in bambù — costruita fisicamente, giunto dopo giunto, in Valtellina. Un miliardo di Persone va mosso senza lasciare traccia del nostro passaggio sulla Terra. Per questo il materiale non è estetica. È identità: se non torna alla terra, non esce dal cantiere.
-          </p>
-
-          <p class="body-text" style="margin-top: var(--sp-4);">
-            Per le parti stampate, plastiche biobased e biodegradabili — materiali a base PHA che tornano alla terra, e filamenti a base di alghe che stiamo testando. E il globale è un miliardo di locali: ogni veicolo è stampato dove sta il corpo, con una stampante desktop, tubi e giunti stampati. Zero fabbrica, zero spedizioni. File aperti.
+            La <strong style="color:var(--fg);font-weight:600;">5/1bln</strong> è una bici in bambù, fatta a mano in Valtellina. Il materiale non è estetica, è identità: se non torna alla terra, non esce dal cantiere. Bambù e bioplastiche a base PHA per le parti stampate — e ogni veicolo si stampa dove vivi, con una desktop. Zero fabbrica, zero spedizioni. File aperti.
           </p>
 
           <p class="material__badge" style="margin-top: var(--sp-6);" aria-label="Materiali che tornano alla terra">
@@ -1629,6 +1843,26 @@
     </section>
 
     <!-- ══════════════════════════════════════════
+         SHOEPEI — la libertà comincia dai piedi (parte di M1BP)
+    ══════════════════════════════════════════ -->
+    <section class="section section--lg" id="shoepei" aria-labelledby="shoepei-heading">
+      <div class="container">
+        <div class="reveal" style="max-width:760px;">
+          <p class="eyebrow">Shoepei — anche i piedi</p>
+          <h2 class="section-heading" id="shoepei-heading">
+            La libertà comincia<br />dai piedi.
+          </h2>
+          <p class="body-text" style="margin-top: var(--sp-6);">
+            Lo stesso metodo dei veicoli, applicato al passo. <strong style="color:var(--fg);font-weight:600;">Shoepei</strong> è una scarpa open-source, stampabile in 3D e biodegradabile: democratizzare la libertà di <em style="font-style:italic;color:var(--accent)">camminare</em>. La manifesti dove vivi; quando è finita, torna alla terra. In costruzione nel 2026, in Valtellina — parte dello stesso movimento.
+          </p>
+          <p style="margin-top: var(--sp-6);">
+            <a class="btn btn--outline" href="https://shoepei.com" target="_blank" rel="noopener noreferrer">Scopri Shoepei su shoepei.com →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
          VISION — propagation: schools → RSA / disability centers
     ══════════════════════════════════════════ -->
     <section class="vision section section--lg" id="vision" aria-labelledby="vision-heading">
@@ -1657,7 +1891,7 @@
             <span class="vision-node__num" aria-hidden="true">02</span>
             <h3 class="vision-node__title">Case di riposo e centri per disabilità</h3>
             <p class="vision-node__body">
-              Vogliamo questa bici in ogni casa di riposo e centro per Persone con disabilità. Il volante lo tiene lei: dice cosa le serve, prova, corregge, dirige. I ragazzi sono le sue mani.
+              La prosecuzione di Asmile: con la guida autonoma, una in ogni casa di riposo e centro per Persone con disabilità. Il volante lo tiene lei — dice cosa le serve, prova, corregge, dirige. I ragazzi sono le sue mani.
             </p>
           </li>
 
@@ -1672,131 +1906,6 @@
         </ul>
 
         <p class="pull-quote reveal">&laquo;Ciò che si muove è il <span>legame</span>, non il corpo.&raquo;</p>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         PROJECTS — Asmile, Libera il tuo Movimento, Shoepei
-    ══════════════════════════════════════════ -->
-    <section class="projects section section--lg" id="projects" aria-labelledby="projects-heading">
-      <div class="container">
-        <header class="reveal">
-          <p class="eyebrow">Storie — la prima di un miliardo</p>
-          <h2 class="section-heading" id="projects-heading">
-            Ogni veicolo nasce<br />per una Persona.
-          </h2>
-          <p class="body-text" style="margin-top:var(--sp-6);">
-            Asmile è nata per Arianna. Non sarà l&rsquo;ultima. Ogni veicolo parte da un bisogno vero — e i file restano aperti, così la prossima persona, ovunque, può costruire il prossimo. C&rsquo;è tanto da raccontare.
-          </p>
-        </header>
-
-        <ul class="projects__grid" aria-label="Veicoli e storie">
-
-          <li class="project-card reveal reveal--delay-1" aria-labelledby="project-asmile">
-            <span class="project-card__tag">Triciclo</span>
-            <h3 class="project-card__title" id="project-asmile">Asmile</h3>
-            <p class="project-card__for">per Arianna</p>
-            <p class="project-card__body">
-              Un triciclo a guida autonoma — sensori AI, sterzata e frenata autonome. Ha gareggiato agli Special Olympics di Zugo. Ha vinto il premio EDUKI all&rsquo;ONU di Ginevra.
-            </p>
-            <span class="project-card__status project-card__status--racing">In gara</span>
-            <a
-              class="project-card__link"
-              href="https://www.gofundme.com/f/aiutami-a-far-sorridere-arianna-costruiamo-insieme-asmile"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="La storia di Asmile su GoFundMe (si apre in una nuova scheda)"
-            >La storia</a>
-          </li>
-
-          <li class="project-card reveal reveal--delay-2" aria-labelledby="project-tommi">
-            <span class="project-card__tag">Tandem</span>
-            <h3 class="project-card__title" id="project-tommi">Tommi</h3>
-            <p class="project-card__for">stampato in 3D · pronto</p>
-            <p class="project-card__body">
-              Un tandem, stampato in 3D e pronto per essere liberato — file open-source, così chiunque può stamparlo e pedalare in due. Pedalare non è mai da soli.
-            </p>
-            <span class="project-card__status project-card__status--ready">Pronto per essere liberato</span>
-            <a
-              class="project-card__link"
-              href="https://www.instagram.com/moving_one_billion_people"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Tommi su Instagram (si apre in una nuova scheda)"
-            >Guardalo</a>
-          </li>
-
-          <li class="project-card reveal reveal--delay-3" aria-labelledby="project-mimma">
-            <span class="project-card__tag">Carrozzina</span>
-            <h3 class="project-card__title" id="project-mimma">Mimma</h3>
-            <p class="project-card__for">la strada per Santiago</p>
-            <p class="project-card__body">
-              Stiamo rifacendo la carrozzina per portare Mimma fino a Santiago. La prima di un miliardo. Documentata, passo dopo passo, su Instagram.
-            </p>
-            <span class="project-card__status">In cantiere</span>
-            <a
-              class="project-card__link"
-              href="https://www.instagram.com/moving_one_billion_people"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Il viaggio di Mimma su Instagram (si apre in una nuova scheda)"
-            >Seguila</a>
-          </li>
-
-          <li class="project-card reveal reveal--delay-1" aria-labelledby="project-libera">
-            <span class="project-card__tag">Strumento</span>
-            <h3 class="project-card__title" id="project-libera">Libera il tuo Movimento</h3>
-            <p class="project-card__for">testo → G-code</p>
-            <p class="project-card__body">
-              Una pipeline AI multi-agente: dal linguaggio naturale al G-code per giunti di telaio stampabili. Descrivi ciò che ti serve; il sistema stampa il giunto. Non il bambù — il giunto, liberato.
-            </p>
-            <span class="project-card__status">In sviluppo</span>
-            <a
-              class="project-card__link"
-              href="https://github.com/rinaldiden/Moving-One-Billion-People-"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Libera il tuo Movimento su GitHub (si apre in una nuova scheda)"
-            >Vedi su GitHub</a>
-          </li>
-
-          <li class="project-card reveal reveal--delay-2" aria-labelledby="project-shoepei">
-            <span class="project-card__tag">Calzatura</span>
-            <h3 class="project-card__title" id="project-shoepei">Shoepei</h3>
-            <p class="project-card__for">ritorno alla terra</p>
-            <p class="project-card__body">
-              Una scarpa stampata in 3D, biodegradabile. Il primo passo verso una mobilità che torna alla terra — dalla suola in su.
-            </p>
-            <span class="project-card__status">In sviluppo</span>
-            <a
-              class="project-card__link"
-              href="https://github.com/rinaldiden/Moving-One-Billion-People-"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Shoepei su GitHub (si apre in una nuova scheda)"
-            >Vedi su GitHub</a>
-          </li>
-
-          <li class="project-card project-card--invite reveal reveal--delay-3" aria-labelledby="project-next">
-            <span class="project-card__tag">La prossima</span>
-            <h3 class="project-card__title" id="project-next">La tua storia</h3>
-            <p class="project-card__for">una scuola · una casa · una comunità</p>
-            <p class="project-card__body">
-              Qualcuno vicino a te non può muoversi liberamente? Parti da lì. Costruisci con loro, non per loro — e raccontacelo. Il prossimo veicolo è tuo da manifestare.
-            </p>
-            <a
-              class="project-card__link"
-              href="mailto:daniele@movingonebillionpeople.org"
-              aria-label="Scrivi a Daniele per iniziare una storia"
-            >Scrivi a Daniele</a>
-          </li>
-
-        </ul>
-
-        <p class="projects__more reveal">
-          Nuove storie arrivano di continuo — pedalata dopo pedalata, giunto dopo giunto.
-          <a href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer">Seguile su Instagram</a>
-        </p>
       </div>
     </section>
 
@@ -1920,8 +2029,15 @@
         <p class="footer-brand__tagline">
           Veicoli open-source che democratizzano la libertà di movimento — stampabili in 3D, fatti dove vivi, che tornano alla terra. Per un miliardo di Persone.
         </p>
-        <p class="footer-brand__signature" lang="hi" title="I recognize the divine in you — the greeting between pilgrims on the Narmada">Narmade Har.</p>
         <p class="footer-brand__location">Tirano · Valtellina — 2026</p>
+        <div class="footer-social" style="display:flex;gap:var(--sp-4);margin-top:var(--sp-5);align-items:center;">
+          <a href="https://www.instagram.com/moving_one_billion_people" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:var(--fg-muted);display:inline-flex;">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.52.01-4.76.07-1.15.05-1.77.24-2.19.4-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.42-.35 1.04-.4 2.19-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.05 1.15.24 1.77.4 2.19.21.55.47.94.88 1.35.41.41.8.67 1.35.88.42.16 1.04.35 2.19.4 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.15-.05 1.77-.24 2.19-.4.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.42.35-1.04.4-2.19.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.15-.24-1.77-.4-2.19-.21-.55-.47-.94-.88-1.35-.41-.41-.8-.67-1.35-.88-.42-.16-1.04-.35-2.19-.4C15.52 4.01 15.15 4 12 4Zm0 3.07A4.93 4.93 0 1 1 12 16.93 4.93 4.93 0 0 1 12 7.07Zm0 1.8a3.13 3.13 0 1 0 0 6.26 3.13 3.13 0 0 0 0-6.26Zm5.13-.42a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg>
+          </a>
+          <a href="https://github.com/rinaldiden/Moving-One-Billion-People-" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style="color:var(--fg-muted);display:inline-flex;">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55l-.01-1.93c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14l-.01 3.17c0 .31.2.67.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+          </a>
+        </div>
       </div>
 
       <nav aria-label="Navigazione footer — link">
@@ -2003,6 +2119,27 @@
           btn.replaceWith(iframe);
         });
       });
+
+      // 1c. Hero live counter: conta da 1 a 7 / 1.000.000.000
+      var counterEl = document.getElementById('mobp-count');
+      if (counterEl) {
+        var cFrom = parseInt(counterEl.getAttribute('data-from'), 10) || 1;
+        var cTo = parseInt(counterEl.getAttribute('data-to'), 10) || 7;
+        var cReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (cReduce) {
+          counterEl.textContent = cTo;
+        } else {
+          var cDur = 2200, cStart = null;
+          var cEase = function (t) { return 1 - Math.pow(1 - t, 3); };
+          var cTick = function (ts) {
+            if (!cStart) cStart = ts;
+            var p = Math.min((ts - cStart) / cDur, 1);
+            counterEl.textContent = Math.round(cFrom + (cTo - cFrom) * cEase(p));
+            if (p < 1) requestAnimationFrame(cTick);
+          };
+          requestAnimationFrame(cTick);
+        }
+      }
 
       // 2. Reveal on scroll via IntersectionObserver
       //    Fallback: if IO not supported, elements stay visible (opacity:0 removed)
